@@ -3,10 +3,10 @@
     <data noupdate="1">
         <!-- Sequence TYPES  -->
 
-        <record id="seq_type_delivery_carrier_colissimo_gls" model="ir.sequence.type">
-            <field name="name">Delivery GLS</field>
-            <field name="code">stock.picking_gls</field>
-        </record>
+        <!--<record id="seq_type_delivery_carrier_colissimo_gls" model="ir.sequence.type">-->
+            <!--<field name="name">Delivery GLS</field>-->
+            <!--<field name="code">stock.picking_gls</field>-->
+        <!--</record>-->
 
         <!--  SEQUENCES -->
         <record id="seq_delivery_carrier_colissimo_gls" model="ir.sequence">

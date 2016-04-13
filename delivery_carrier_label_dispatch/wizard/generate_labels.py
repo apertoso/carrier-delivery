@@ -89,7 +89,7 @@ class DeliveryCarrierLabelGenerate(orm.TransientModel):
         for pack, moves, label in self._get_packs(cr, uid, wizard, dispatch,
                                                   context=context):
             if not label or wizard.generate_new_labels:
-                picking_out_obj = self.pool['stock.picking.out']
+                picking_out_obj = self.pool['stock.picking']
                 picking = moves[0].picking_id
                 # generate the label of the pack
                 if pack:

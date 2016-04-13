@@ -20,7 +20,7 @@
 ##############################################################################
 
 {'name': 'Base module for carrier labels',
- 'version': '8.0.1.2.0',
+ 'version': '9.0.1.2.0',
  'author': "Camptocamp,Akretion,Odoo Community Association (OCA)",
  'maintainer': 'Camptocamp',
  'category': 'Delivery',
@@ -33,7 +33,7 @@
           'security/ir.model.access.csv',
           ],
  'tests': [],
- 'installable': False,
+ 'installable': True,
  'auto_install': False,
  'license': 'AGPL-3',
  'application': True,

@@ -80,8 +80,8 @@ class stock_picking(orm.Model):
         return result
 
 
-class stock_picking_out(orm.Model):
-    _inherit = 'stock.picking.out'
+class stock_picking(orm.Model):
+    _inherit = 'stock.picking'
 
     _columns = {
         'carrier_file_generated': fields.boolean('Carrier File Generated',
@@ -95,5 +95,5 @@ class stock_picking_out(orm.Model):
         if default is None:
             default = {}
         default.update({'carrier_file_generated': False})
-        return super(stock_picking_out, self).copy(cr, uid, rec_id, default,
+        return super(stock_picking, self).copy(cr, uid, rec_id, default,
                                                    context=context)

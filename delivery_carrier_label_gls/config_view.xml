@@ -46,6 +46,7 @@
 </record>
 
 <record id="action_gls_config" model="ir.actions.act_window">
+  <field name="name">Gls Config</field>
   <field name="type">ir.actions.act_window</field>
   <field name="res_model">gls.config.settings</field>
   <field name="view_mode">form</field>

@@ -68,10 +68,11 @@
       <field name="model">delivery.carrier</field>
       <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
       <field name="arch" type="xml">
-        <field name="pricelist_ids" position="after">
-          <separator string="Options" colspan="4"/>
-          <field name="available_option_ids" nolabel="1" colspan="4"/>
-        </field>
+        <xpath expr="//notebook" position="inside">
+          <page name="options" string="Options">
+             <field name="available_option_ids" nolabel="1" colspan="4"/>
+          </page>
+        </xpath>
         <field name="active" position="after">
           <field name="type"/>
           <field name="code"/>

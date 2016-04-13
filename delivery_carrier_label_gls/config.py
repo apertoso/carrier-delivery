@@ -19,11 +19,11 @@
 #
 ###############################################################################
 
-from openerp.osv import orm, fields
+from openerp import api, fields, models, _
 from . company import ResCompany
 
 
-class GlsConfigSettings(orm.TransientModel):
+class GlsConfigSettings(models.TransientModel):
     _name = 'gls.config.settings'
 
     _description = 'GLS carrier configuration'
@@ -31,21 +31,31 @@ class GlsConfigSettings(orm.TransientModel):
     _prefix = 'gls_'
     _companyObject = ResCompany
 
-    _columns = {
-        'gls_customer_code': fields.char(
+    gls_customer_code = fields.Char(
             string='Customer Code',
             readonly=True,
             help="Code for GLS carrier company (T8915)\n"
                  "Information common to whole companies "
-                 "to configure in System Parameter"),
-        'gls_warehouse': fields.char(
+                 "to configure in System Parameter")
+    gls_warehouse= fields.Char(
             string='Warehouse',
             readonly=True,
             help="GLS warehouse near customer location (T8700)\n"
                  "Information common to whole companies "
-                 "to configure in System Parameter"),
-    }
+                 "to configure in System Parameter")
+    inter_contact_id = fields.Char('International',
+                                       related="company_id.gls_inter_contact_id",
+                                       help="Contact id for International " \
+                                            "transportation (TP8914)")
+    fr_contact_id = fields.Char('France',
+                                   related="company_id.gls_fr_contact_id",
+                                   help="Contact id for France " \
+                                        "transportation (TP8914)")
 
+    test = fields.Boolean('Url Test',
+                                related="company_id.gls_test",
+                                help="Check if requested webservice " \
+                                     "is test plateform")
     def default_get(self, cr, uid, fields, context=None):
         res = {}
         param_m = self.pool['ir.config_parameter']

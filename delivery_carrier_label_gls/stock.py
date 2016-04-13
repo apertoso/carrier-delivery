@@ -131,7 +131,7 @@ class StockPicking(orm.Model):
         return delivery
 
     def _prepare_sender_gls(self, cr, uid, pick, context=None):
-        partner = self.pool['stock.picking.out']._get_label_sender_address(
+        partner = self.pool['stock.picking']._get_label_sender_address(
             cr, uid, pick, context=context)
         global_infos = self._prepare_global_gls(cr, uid, context=context)
         sender = {'contact_id': pick.company_id.gls_fr_contact_id,
@@ -244,7 +244,7 @@ class StockPicking(orm.Model):
             labels.append(label_info)
         # must be on this stock.picking.out to event on connector
         # like in modules prestahop or magento
-        self.pool['stock.picking.out'].write(cr, uid, picking.id, pick2update,
+        self.pool['stock.picking'].write(cr, uid, picking.id, pick2update,
                                              context=context)
         picking = self.browse(cr, uid, picking.id, context=context)
         self._customize_gls_picking(cr, uid, picking, context=context)
@@ -305,8 +305,8 @@ class StockPicking(orm.Model):
         return sequence
 
 
-class StockPickingOut(orm.Model):
-    _inherit = 'stock.picking.out'
+class StockPicking(orm.Model):
+    _inherit = 'stock.picking'
 
     def copy(self, cr, uid, id, default=None, context=None):
         if default is None:
@@ -321,8 +321,8 @@ class StockPickingOut(orm.Model):
         return 0
 
 
-class StockPickingIn(orm.Model):
-    _inherit = 'stock.picking.in'
+class StockPicking(orm.Model):
+    _inherit = 'stock.picking'
 
     def action_generate_carrier_label(self, cr, uid, ids, context=None):
         raise orm.except_orm(

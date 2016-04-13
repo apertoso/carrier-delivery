@@ -31,13 +31,13 @@ class DeliveryCarrierFileGenerate(orm.TransientModel):
         if context is None:
             context = {}
         res = False
-        if (context.get('active_model', False) == 'stock.picking.out' and
+        if (context.get('active_model', False) == 'stock.picking' and
                 context.get('active_ids', False)):
             res = context['active_ids']
         return res
 
     _columns = {
-        'picking_ids': fields.many2many('stock.picking.out',
+        'picking_ids': fields.many2many('stock.picking',
                                         string='Delivery Orders'),
         'recreate': fields.boolean(
             'Recreate files',
